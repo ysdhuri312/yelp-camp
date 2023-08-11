@@ -2,26 +2,32 @@ const express = require("express");
 const colors = require("colors");
 const path = require("path");
 const mongoose = require("mongoose");
+const Campground = require("./models/campground");
 
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp', { /* useNewUrlParser: true, useCreateIndex: true, */ useUnifiedTopology: true });
+mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp", {
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
-db.on('error', console.log.bind(console, 'Connection Error:'));
-db.once('open', () => {
-    console.log('Database Connected'.bgCyan);
+db.on("error", console.error.bind(console, "Connection Error:"));
+db.once("open", () => {
+  console.log("Database Connected".bgCyan);
 });
 
 const app = express();
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-app.get('/', (req, res) => {
-    res.render('home');
-})
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
-
+app.get("/campgrounds", async (req, res) => {
+  const campgrounds = await Campgrounds.find({});
+  res.render("campgrounds/index");
+});
 
 app.listen(3000, () => {
-    console.log('Serving on Port 3000'.bgMagenta);
-})
+  console.log("Serving on Port 3000".bgMagenta);
+});

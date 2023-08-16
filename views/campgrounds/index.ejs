@@ -5,5 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <h1>All Capmgrounds</h1>
+    <ul>
+      <% for (campground of campgrounds) { %>
+      <li><%= campground.title %></li>
+      <% } %>
+    </ul>
+  </body>
 </html>

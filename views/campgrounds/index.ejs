@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>All Capmgrounds</h1>
-    <ul>
-      <% for (campground of campgrounds) { %>
-      <li>
-        <a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a>
-      </li>
-      <% } %>
-    </ul>
+<!-- @format -->
 
-    <a href="/campgrounds/new">Add Campgrounds</a>
-  </body>
-</html>
+<% layout('campgrounds/layouts/boilerplate') %>
+
+<h1 class="mb-4">All Capmgrounds</h1>
+
+<!-- <a href="/campgrounds/new">Add Campgrounds</a><br /><br /> -->
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+  <% for (campground of campgrounds) { %>
+
+  <div class="col">
+    <a href="/campgrounds/<%=campground._id%>" class="text-decoration-none">
+      <div class="card h-100">
+        <img src="<%=campground.img_url%>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= campground.title %></h5>
+          <p class="card-text"><%= campground.description %></p>
+        </div>
+        <div class="card-footer">
+          <i class="bi bi-geo-alt"></i>
+          <small class="text-muted"><%=campground.location%></small>
+        </div>
+      </div>
+    </a>
+  </div>
+  <% } %>
+</div>

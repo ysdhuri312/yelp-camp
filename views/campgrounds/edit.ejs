@@ -3,7 +3,7 @@
   <div class="row">
   <div class="col-6 offset-3">
     <h1 class="text-center">Edit Campgrounds</h1>
-    <form action="/campgrounds/<%= campground._id%>?_method=PUT" method="POST">
+    <form action="/campgrounds/<%= campground._id%>?_method=PUT" method="POST" class="needs-validation" novalidate>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Title</label>
         <input
@@ -13,8 +13,15 @@
           name="campground[title]"
           aria-describedby="emailHelp"
           value="<%=campground.title%>"
+          required
         />
       </div>
+      <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Please add a Title.
+    </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Location</label>
         <input
@@ -23,7 +30,14 @@
           id="exampleInputPassword1"
           name="campground[location]"
           value="<%=campground.location%>"
+          required
         />
+        <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Please enter a Location.
+    </div>
       </div>
       <div class="mb-4">
         <label for="floatingTextarea" class="form-label">Description</label>
@@ -32,14 +46,27 @@
           id="floatingTextare"
           name="campground[description]"
           value="<%=campground.description%>"
+          required
         ><%=campground.description%></textarea>
+        <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Please enter a Description.
+    </div>
       </div>
       <div class="mb-3">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Image Url</label>
     <div class="input-group">
       <div class="input-group-text"><i class="bi bi-link-45deg"></i></div>
       <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Image_url"
-      name="campground[img_url]" value="<%=campground.img_url%>" />
+      name="campground[img_url]" value="<%=campground.img_url%>" required/>
+      <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="invalid-feedback">
+      Please add a valid url.
+    </div>
     </div>
   </div>
       <div class="d-flex justify-content-between"">

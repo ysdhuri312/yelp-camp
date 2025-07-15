@@ -11,7 +11,7 @@ app.set('views', path.join(path.resolve(), 'views'));
 
 app.get('/', (req, res) => {
     console.log('');
-    res.send("Welcome to yelp-camp API");
+    res.render('home');
 });
 
 

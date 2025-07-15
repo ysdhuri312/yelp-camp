@@ -1,0 +1,19 @@
+{
+  "name": "yelp-camp",
+  "version": "1.0.0",
+  "description": "Learning full stack development with udemy",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ysdhuri312/yelp-camp.git"
+  },
+  "author": "Yogesh Dhuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ysdhuri312/yelp-camp/issues"
+  },
+  "homepage": "https://github.com/ysdhuri312/yelp-camp#readme"
+}

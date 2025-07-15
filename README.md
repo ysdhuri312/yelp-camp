@@ -1,2 +1,2 @@
 # yelp-camp
-Learning full stack development
+Learning full stack development with udemy

@@ -1,11 +1,9 @@
-const mongoose = require("mongoose");
-const Campground = require("../models/campground");
-const cities = require("./cities");
-const { places, descriptors } = require("./seedHelpers");
+import mongoose from 'mongoose';
+import Campground from '../models/campground.model.js';
+import cities from './cities.js';
+import { places, descriptors } from './seedHelpers.js';
 
-mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp", {
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/yelp-camp");
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error:"));
@@ -28,6 +26,6 @@ const seedDB = async () => {
   }
 };
 
-// seedDB().then(() => {
-//   mongoose.connection.close();
-// });
+seedDB().then(() => {
+  mongoose.connection.close();
+});

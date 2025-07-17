@@ -1,4 +1,5 @@
 import express from 'express';
+import methodOverride from 'method-override';
 import path from 'node:path';
 import connectDB from './config/db.js';
 import Campground from './models/campground.model.js';
@@ -14,6 +15,7 @@ connectDB();
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 // Routes
 app.get('/', (req, res) => {
@@ -40,6 +42,17 @@ app.get('/campground/:id', async (req, res) => {
     res.render('campground/show', { campground });
 })
 
+app.get('/campground/:id/edit', async (req, res) => {
+    const campground = await Campground.findById({ _id: req.params.id });
+    res.render('campground/edit', { campground });
+})
+
+app.put('/campground/:id/edit', async (req, res) => {
+    const { title, location } = req.body.campground;
+    await Campground.findByIdAndUpdate(req.params.id, { $set: { title: title, location: location } });
+    const campgrounds = await Campground.find({});
+    res.render('campground/index', { campgrounds });
+})
 
 app.listen(PORT, (req, res) => {
     console.log("✅ Server running on http://localhost:3000");

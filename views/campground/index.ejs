@@ -4,10 +4,44 @@
 
     <ul>
         <% for(let campground of campgrounds) { %>
-            <li>
-                <a href='/campground/<%= campground._id %>'>
+
+            <div class="card mb-3">
+                <div class=" row g-0">
+                    <div class="col-md-4">
+                        <img src="<%= campground.image %>" class="img-fluid h-100 rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href='/campground/<%= campground._id %>'>
+                                    <%= campground.title %>
+                                </a>
+                            </h5>
+                            <p class="card-text mb-2">
+                                <%= campground.description %>
+                            </p>
+                            <p class="card-text mb-2">
+                                <%= campground.location %>
+                            </p>
+                            <p class="card-text mb-2">
+                                Price : $ <%= campground.price %>
+                            </p>
+                            <p class="card-text mb-2"><small class="text-body-secondary">Last updated 3 mins ago</small>
+                            </p>
+                            <a href="/campground/<%= campground._id %>/edit" class="btn btn-primary">Edit campground</a>
+
+                            <form class="d-inline-block"
+                                action="/campground/<%= campground._id %>/delete?_method=DELETE" method="POST">
+                                <button class="btn btn-danger" type="submit">Delete Campground</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <a href='/campground/<%= campground._id %>'>
                     <%= campground.title %>
-                </a>
-            </li>
+                </a> -->
             <% } %>
     </ul>

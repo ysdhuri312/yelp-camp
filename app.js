@@ -51,7 +51,12 @@ app.put('/campground/:id/edit', async (req, res) => {
     const { title, location } = req.body.campground;
     await Campground.findByIdAndUpdate(req.params.id, { $set: { title: title, location: location } });
     const campgrounds = await Campground.find({});
-    res.render('campground/index', { campgrounds });
+    res.redirect('/campgrounds');;
+})
+
+app.delete('/campground/:id/delete', async (req, res) => {
+    await Campground.findByIdAndDelete(req.params.id);
+    res.redirect('/campgrounds');
 })
 
 app.listen(PORT, (req, res) => {

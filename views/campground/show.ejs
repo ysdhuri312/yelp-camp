@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Campground | <%= campground.title%>
-    </title>
-</head>
-<body>
+<% layout('layout/boilerplate') -%>
+
     <h3>
         <%=campground.title%>
     </h3>
@@ -21,5 +13,3 @@
     </form>
 
     <h5><a href="/campgrounds">All Campground</a></h5>
-</body>
-</html>

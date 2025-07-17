@@ -1,5 +1,6 @@
 import express from 'express';
 import methodOverride from 'method-override';
+import engine from 'ejs-mate';
 import path from 'node:path';
 import connectDB from './config/db.js';
 import Campground from './models/campground.model.js';
@@ -8,11 +9,13 @@ import Campground from './models/campground.model.js';
 const app = express();
 const PORT = 3000;
 
+app.engine('ejs', engine);
 app.set("view engine", 'ejs');
 app.set('views', path.join(path.resolve(), 'views'));
 connectDB();
 
 // Middlewares
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));

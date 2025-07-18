@@ -1,12 +1,38 @@
 <% layout('layout/boilerplate') -%>
-
-    <h1>Add Campground</h1>
-    <form action="/campground" method="POST">
-        <label for="title">Title</label>
-        <input type="text" name="campground[title]" id="title" />
-
-        <label for="location">Location</label>
-        <input type="text" name="campground[location]" id="location" />
-
-        <button type="submit">Submit</button>
-    </form>
+    <section class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <h1 class="text-center">Add Campground</h1>
+                <form action="/campground" method="POST">
+                    <div class="mb-2">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" name="campground[title]" id="title" />
+                    </div>
+                    <div class="mb-2">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" name="campground[location]" id="location" />
+                    </div>
+                    <div class="mb-2">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" name="campground[description]" id="description" />
+                    </div>
+                    <div class="mb-2">
+                        <label for="imageurl" class="form-label">ImageURL</label>
+                        <input type="text" class="form-control" name="campground[image]" id="imageurl" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="validationCustomUsername" class="form-label">Price</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">$</span>
+                            <input type="text" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/campgrounds" class="btn btn-primary">All campgrounds</a>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </section>

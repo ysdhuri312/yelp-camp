@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                <h1 class="text-center">Add Campground</h1>
+                <h2 class="text-center">Add Campground</h2>
                 <form action="/campground" method="POST">
                     <div class="mb-2">
                         <label for="title" class="form-label">Title</label>
@@ -22,11 +22,11 @@
                         <input type="text" class="form-control" name="campground[image]" id="imageurl" />
                     </div>
                     <div class="mb-3">
-                        <label for="validationCustomUsername" class="form-label">Price</label>
+                        <label for="price" class="form-label">Price</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text" id="inputGroupPrepend">$</span>
-                            <input type="text" class="form-control" id="validationCustomUsername"
-                                aria-describedby="inputGroupPrepend" required>
+                            <input type="text" class="form-control" id="price" aria-describedby="inputGroupPrepend"
+                                required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

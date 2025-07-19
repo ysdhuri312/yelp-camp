@@ -52,7 +52,7 @@ app.get('/campground/:id/edit', async (req, res) => {
 
 app.put('/campground/:id/edit', async (req, res) => {
     const { title, location } = req.body.campground;
-    await Campground.findByIdAndUpdate(req.params.id, { $set: { title: title, location: location } });
+    await Campground.findByIdAndUpdate(req.params.id, { $set: { ...req.body.campground } });
     const campgrounds = await Campground.find({});
     res.redirect('/campgrounds');;
 })
@@ -61,6 +61,8 @@ app.delete('/campground/:id/delete', async (req, res) => {
     await Campground.findByIdAndDelete(req.params.id);
     res.redirect('/campgrounds');
 })
+
+
 
 app.listen(PORT, (req, res) => {
     console.log("✅ Server running on http://localhost:3000");

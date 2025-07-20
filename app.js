@@ -28,32 +28,15 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 // Routes
-app.get('/', (req, res, next) => {
-  try {
-    console.log('');
-    res.render('home');
-  } catch (e) {
-    next();
-  }
-});
-
 app.use('/campground', campgroundRoutes);
 
-// app.get('/campground/all', getAllCampgrounds);
+app.get('/', (req, res, next) => {
+  res.render('home');
+});
 
-// app.get('/campground/new', showNewCampgroundForm);
-// app.post('/campground', createNewCampground);
-
-// app.get('/campground/:id', getCampground);
-
-// app.get('/campground/:id/edit', editCampgroundForm);
-// app.put('/campground/:id', editCampground);
-
-// app.delete('/campground/:id', deleteCampground);
-
-app.use((req, res, next) => {
+app.use('/{*any}', (req, res, next) => {
   // console.log(`${req.method} ${req.path}`)
-  return new customError(404, 'Page not found');
+  next(new customError(404, 'Page not found'));
 });
 
 app.use(errorHandler);

@@ -23,7 +23,7 @@ const createNewCampground = catchAsyncError(async (req, res, next) => {
 });
 
 const getCampground = catchAsyncError(async (req, res, next) => {
-  const campground = await Campground.findById({ _id: req.params.id });
+  const campground = await Campground.findById(req.params.id);
   res.render('campground/show', { campground });
 });
 

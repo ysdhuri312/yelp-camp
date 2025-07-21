@@ -7,11 +7,10 @@ import engine from 'ejs-mate';
 import path from 'node:path';
 
 import connectDB from './config/db.js';
-
-import customError from './utils/customError.js';
 import errorHandler from './utils/error.handler.js';
 
 import campgroundRoutes from './routes/campground.routes.js';
+import reviewRoutes from './routes/review.routes.js';
 
 const app = express();
 const PORT = 3000;
@@ -29,15 +28,16 @@ app.use(methodOverride('_method'));
 
 // Routes
 app.use('/campground', campgroundRoutes);
+app.use('/campground', reviewRoutes);
 
 app.get('/', (req, res, next) => {
   res.render('home');
 });
 
-app.use('/{*any}', (req, res, next) => {
-  // console.log(`${req.method} ${req.path}`)
-  next(new customError(404, 'Page not found'));
-});
+// app.use('/{*any}', (req, res, next) => {
+//   // console.log(`${req.method} ${req.path}`)
+//   next(new customError(404, 'Page not found'));
+// });
 
 app.use(errorHandler);
 

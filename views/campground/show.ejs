@@ -35,5 +35,16 @@
             <form action="/campground/<%= campground._id %>?_method=DELETE" method="POST" class="d-inline-block">
                 <button class="btn btn-danger" type="submit">Delete Campground</button>
             </form>
+            <hr>
+            <form action="/campground/<%= campground.id %>/reviews" method="POST">
+                <legend>Drop a Review</legend>
+                <label for="ratings" class="form-label">Ratings</label>
+                <input type="range" class="form-range mb-3" min="0" max="5" name="review[rating]" id="ratings">
+                <div class="form-floating">
+                    <textarea class="form-control mb-3 p-1" placeholder="Leave a comment here" style="height: 100px"
+                        name="review[body]" id="body"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>

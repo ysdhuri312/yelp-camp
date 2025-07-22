@@ -8,6 +8,7 @@ import path from 'node:path';
 
 import connectDB from './config/db.js';
 import errorHandler from './utils/error.handler.js';
+import CustomError from './utils/CustomError.js';
 
 import campgroundRoutes from './routes/campground.routes.js';
 import reviewRoutes from './routes/review.routes.js';
@@ -26,18 +27,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
-// Routes
-app.use('/campground', campgroundRoutes);
-app.use('/campground', reviewRoutes);
-
 app.get('/', (req, res, next) => {
   res.render('home');
 });
 
-// app.use('/{*any}', (req, res, next) => {
-//   // console.log(`${req.method} ${req.path}`)
-//   next(new customError(404, 'Page not found'));
-// });
+// Routes
+app.use('/campground', campgroundRoutes);
+app.use('/campground', reviewRoutes);
+
+app.use((req, res, next) => {
+  // console.log(`${req.method} ${req.path}`)
+  next(new CustomError(404, 'Page not found...', undefined));
+});
 
 app.use(errorHandler);
 

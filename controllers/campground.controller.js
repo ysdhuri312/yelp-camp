@@ -39,7 +39,7 @@ const editCampground = catchAsyncError(async (req, res, next) => {
     $set: { ...req.body.campground },
   });
   const campgrounds = await Campground.find({});
-  res.redirect('/campgrounds');
+  res.redirect('/campground/all');
 });
 
 const deleteCampground = catchAsyncError(async (req, res, next) => {

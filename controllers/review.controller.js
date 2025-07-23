@@ -17,6 +17,7 @@ const createReview = catchAsyncError(async (req, res, next) => {
   campground.reviews.push(review);
   await review.save();
   await campground.save();
+  req.flash('success', 'Review created successfully');
   res.redirect(`/campground/${campground._id}`);
 });
 
@@ -24,6 +25,7 @@ const deleteReview = catchAsyncError(async (req, res, next) => {
   const { id, reviewId } = req.params;
   await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
   await Review.findByIdAndDelete(reviewId);
+  req.flash('success', 'Review deleted successfully');
   res.redirect(`/campground/${id}`);
 });
 export { createReview, deleteReview };

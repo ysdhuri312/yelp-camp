@@ -40,11 +40,13 @@ const editCampground = catchAsyncError(async (req, res, next) => {
     $set: { ...req.body.campground },
   });
   const campgrounds = await Campground.find({});
+  req.flash('success', 'Campground updated successfully');
   res.redirect('/campground/all');
 });
 
 const deleteCampground = catchAsyncError(async (req, res, next) => {
   await Campground.findByIdAndDelete(req.params.id);
+  req.flash('success', 'Campground deleted successfully');
   res.redirect('/campground/all');
 });
 

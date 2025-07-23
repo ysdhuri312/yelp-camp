@@ -27,6 +27,12 @@ const getCampground = catchAsyncError(async (req, res, next) => {
   const campground = await Campground.findById(req.params.id).populate(
     'reviews'
   );
+
+  if (!campground) {
+    req.flash('error', 'Cannot find that campground');
+    return res.redirect('/campground/all');
+  }
+
   res.render('campground/show', { campground });
 });
 

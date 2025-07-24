@@ -55,7 +55,7 @@ app.get('/', (req, res, next) => {
 });
 
 // Routes
-app.use('/', userRoutes);
+app.use('/user', userRoutes);
 app.use('/campground', campgroundRoutes);
 app.use('/campground', reviewRoutes);
 

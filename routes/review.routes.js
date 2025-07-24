@@ -4,7 +4,7 @@ import express from 'express';
 import {
   createReview,
   deleteReview,
-} from '../controllers/review.controller.js';
+} from '../controllers/review.controllers.js';
 const router = express.Router();
 
 router.post('/:id/reviews', createReview);

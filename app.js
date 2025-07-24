@@ -14,6 +14,7 @@ import CustomError from './utils/CustomError.js';
 
 import campgroundRoutes from './routes/campground.routes.js';
 import reviewRoutes from './routes/review.routes.js';
+import userRoutes from './routes/user.routes.js';
 
 const app = express();
 const PORT = 3000;
@@ -54,6 +55,7 @@ app.get('/', (req, res, next) => {
 });
 
 // Routes
+app.use('/', userRoutes);
 app.use('/campground', campgroundRoutes);
 app.use('/campground', reviewRoutes);
 

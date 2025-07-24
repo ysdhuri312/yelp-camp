@@ -9,7 +9,7 @@ import {
   editCampgroundForm,
   editCampground,
   deleteCampground,
-} from '../controllers/campground.controller.js';
+} from '../controllers/campground.controllers.js';
 
 const router = express.Router();
 

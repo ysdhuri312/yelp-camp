@@ -1,11 +1,11 @@
 meta {
   name: Add new camground
   type: http
-  seq: 2
+  seq: 1
 }
 
-post {
-  url: http://localhost:3000/campground
+get {
+  url: http://localhost:3000/campground/new
   body: formUrlEncoded
   auth: none
 }

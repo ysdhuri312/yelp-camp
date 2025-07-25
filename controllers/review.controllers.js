@@ -9,7 +9,7 @@ const createReview = catchAsyncError(async (req, res, next) => {
   const { rating, body } = req.body.review;
 
   if (!rating || !body) {
-    throw new customError(400, 'All fields are required.', 'CreateReviewRoute');
+    throw new customError(400, 'All fields are required.');
   }
 
   const campground = await Campground.findById(req.params.id);

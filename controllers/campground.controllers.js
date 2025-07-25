@@ -16,11 +16,7 @@ const createNewCampground = catchAsyncError(async (req, res, next) => {
   const { title, location, description, price, image } = req.body.campground;
 
   if (!title || !location || !description || !price || !image) {
-    return new CustomError(
-      400,
-      'All fields are required.',
-      'NewCamgroundRoute'
-    );
+    return new CustomError(400, 'All fields are required.');
   }
   const campground = await Campground.create({ ...req.body.campground });
   req.flash('success', 'Campground created successfully');

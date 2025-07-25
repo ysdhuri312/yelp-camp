@@ -1,11 +1,7 @@
 /** @format */
 
 export default (err, req, res, next) => {
-  let {
-    statusCode = 500,
-    message = 'Internal Server Error',
-    source = undefined,
-  } = err;
+  let { statusCode = 500, message = 'Internal server error' } = err;
 
   console.log(err.stack);
 
@@ -15,5 +11,5 @@ export default (err, req, res, next) => {
 
   res
     .status(statusCode)
-    .render('error', { err: { statusCode: 400, message: 'Bad request' } });
+    .render('error', { err: { statusCode, message: 'Internal server error' } });
 };

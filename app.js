@@ -37,6 +37,7 @@ var sessionConfig = {
     httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
+    secure: false,
   },
 };
 app.use(session(sessionConfig));
@@ -59,7 +60,11 @@ app.use('/user', userRoutes);
 app.use('/campground', campgroundRoutes);
 app.use('/campground', reviewRoutes);
 
+// System automated urls
 app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) =>
+  res.status(204).end()
+);
 
 // 404 error route
 app.use((req, res, next) => {

@@ -10,15 +10,16 @@ import {
   editCampground,
   deleteCampground,
 } from '../controllers/campground.controllers.js';
+import { isLoggedIn } from '../middlewares/auth.js';
 
 const router = express.Router();
 
 router.get('/all', getAllCampgrounds);
-router.get('/new', showNewCampgroundForm);
-router.post('/', createNewCampground);
+router.get('/new', isLoggedIn, showNewCampgroundForm);
+router.post('/', isLoggedIn, createNewCampground);
 router.get('/:id', getCampground);
-router.put('/:id', editCampground);
-router.delete('/:id', deleteCampground);
-router.get('/:id/edit', editCampgroundForm);
+router.put('/:id', isLoggedIn, editCampground);
+router.delete('/:id', isLoggedIn, deleteCampground);
+router.get('/:id/edit', isLoggedIn, editCampgroundForm);
 
 export default router;

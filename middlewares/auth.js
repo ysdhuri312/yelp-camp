@@ -14,7 +14,7 @@ export const isLoggedIn = catchAsyncError(async (req, res, next) => {
   if (!token) {
     res.locals.isAuthenticated = false;
     req.flash('error', 'Must be signed in first');
-    res.redirect('/userl/signin');
+    res.redirect('/user/signin');
     return new CustomError(403, 'Must be signed in first');
   }
 
@@ -30,9 +30,9 @@ export const isLoggedIn = catchAsyncError(async (req, res, next) => {
 
     if (verifyToken) {
       res.locals.isAuthenticated = true;
-      return next();
+      next();
     } else {
-      res.locals.isAuthenticated = true;
+      res.locals.isAuthenticated = false;
       return new CustomError(403, 'Must be signed in first');
     }
   }

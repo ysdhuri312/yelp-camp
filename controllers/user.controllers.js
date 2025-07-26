@@ -81,6 +81,7 @@ const signinUser = catchAsyncError(async (req, res, next) => {
 
 // Sign out user
 const signoutUser = catchAsyncError((req, res, next) => {
+  req.session.userId = null;
   req.flash('success', 'User sign out sucessfully');
   res.redirect('/campground/all');
 });

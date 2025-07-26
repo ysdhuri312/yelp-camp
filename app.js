@@ -45,6 +45,7 @@ app.use(flash());
 
 // Middleware for flash messages
 app.use((req, res, next) => {
+  res.locals.isAuthenticated = false;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   next();
@@ -69,7 +70,7 @@ app.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) =>
 // 404 error route
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
-  next(new CustomError(404, 'Page not found...', undefined));
+  return new CustomError(404, 'Page not found...');
 });
 
 app.use(errorHandler);

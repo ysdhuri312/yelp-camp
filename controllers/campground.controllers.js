@@ -5,6 +5,9 @@ import catchAsyncError from '../utils/catchAsyncError.js';
 
 const getAllCampgrounds = catchAsyncError(async (req, res, next) => {
   const campgrounds = await Campground.find({});
+  if (req.session.userId) {
+    res.locals.isAuthenticated = true;
+  }
   res.render('campground/index', { campgrounds });
 });
 

@@ -39,17 +39,18 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
 
-      <a class="btn btn-sm btn-success ms-2 text-white" href="/user/signup"
-        >Register</a
-      >
       <div>
-        <% if( false ) { %>
+        <% if( isAuthenticated ) { %>
 
         <a class="btn btn-sm btn-danger ms-2 text-white" href="/user/signout"
           >Sign out</a
         >
 
         <% } else { %>
+
+        <a class="btn btn-sm btn-success ms-2 text-white" href="/user/signup"
+          >Register</a
+        >
         <a class="btn btn-sm btn-primary ms-2 text-white" href="/user/signin"
           >Sign in</a
         >

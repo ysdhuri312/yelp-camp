@@ -30,6 +30,7 @@ export const isLoggedIn = catchAsyncError(async (req, res, next) => {
 
     if (verifyToken) {
       res.locals.isAuthenticated = true;
+      req.userId = decoded.id;
       next();
     } else {
       res.locals.isAuthenticated = false;

@@ -13,7 +13,7 @@ import { isLoggedIn } from '../middlewares/auth.js';
 const router = express.Router();
 
 router.get('/signup', getSignupUserForm);
-router.post('/signup', isLoggedIn, signupUser);
+router.post('/signup', signupUser);
 router.get('/signin', getSigninUserForm);
 router.post('/signin', signinUser);
 router.get('/signout', isLoggedIn, signoutUser);

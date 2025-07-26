@@ -31,7 +31,7 @@ const signupUser = catchAsyncError(async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const user = await User.create({ username, email, password: hashedPassword });
-  req.flash('success', 'User ragister successfully');
+  req.flash('success', 'User register successfully');
   res.render('user/signin');
 });
 

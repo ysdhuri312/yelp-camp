@@ -2,6 +2,7 @@
 
 import mongoose, { Schema } from 'mongoose';
 import Review from './review.model.js';
+import User from './user.model.js';
 
 const campgroundSchema = new Schema({
   title: String,
@@ -9,6 +10,10 @@ const campgroundSchema = new Schema({
   description: String,
   location: String,
   price: Number,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   reviews: [
     {
       type: Schema.Types.ObjectId,

@@ -17,7 +17,7 @@ const showNewCampgroundForm = catchAsyncError((req, res, next) => {
 
 const createNewCampground = catchAsyncError(async (req, res, next) => {
   const { title, location, description, price, image } = req.body.campground;
-
+  req.body.campground.author = req.userId;
   if (!title || !location || !description || !price || !image) {
     return new CustomError(400, 'All fields are required.');
   }
@@ -27,9 +27,9 @@ const createNewCampground = catchAsyncError(async (req, res, next) => {
 });
 
 const getCampground = catchAsyncError(async (req, res, next) => {
-  const campground = await Campground.findById(req.params.id).populate(
-    'reviews'
-  );
+  const campground = await Campground.findById(req.params.id)
+    .populate('reviews')
+    .populate('author');
 
   if (!campground) {
     req.flash('error', 'Cannot find that campground');

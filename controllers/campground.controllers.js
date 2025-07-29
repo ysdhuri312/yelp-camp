@@ -36,6 +36,12 @@ const getCampground = catchAsyncError(async (req, res, next) => {
     return res.redirect('/campground/all');
   }
 
+  if (req.session.userId) {
+    res.locals.isAuthenticated = true;
+  } else {
+    res.locals.isAuthenticated = false;
+  }
+
   res.render('campground/show', { campground });
 });
 

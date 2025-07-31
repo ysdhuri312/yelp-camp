@@ -29,7 +29,7 @@ const createNewCampground = catchAsyncError(async (req, res, next) => {
 
 const getCampground = catchAsyncError(async (req, res, next) => {
   const campground = await Campground.findById(req.params.id)
-    .populate('reviews')
+    .populate('author')
     .populate({
       path: 'reviews',
       populate: {

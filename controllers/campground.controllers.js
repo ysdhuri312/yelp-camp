@@ -2,6 +2,7 @@
 
 import Campground from '../models/campground.model.js';
 import catchAsyncError from '../utils/catchAsyncError.js';
+import jwt from 'jsonwebtoken';
 
 const getAllCampgrounds = catchAsyncError(async (req, res, next) => {
   const campgrounds = await Campground.find({});
@@ -47,7 +48,14 @@ const getCampground = catchAsyncError(async (req, res, next) => {
 
 const editCampgroundForm = catchAsyncError(async (req, res, next) => {
   const campground = await Campground.findById({ _id: req.params.id });
-  res.render('campground/edit', { campground });
+  var decoded = await jwt.verify(req.session.userId, 'thisissecret');
+
+  if (campground.author._id == decoded.id) {
+    res.render('campground/edit', { campground });
+  } else {
+    req.flash('error', 'You are not authorise to edit this campground');
+    res.redirect('/campground/all');
+  }
 });
 
 const editCampground = catchAsyncError(async (req, res, next) => {

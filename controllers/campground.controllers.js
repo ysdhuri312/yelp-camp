@@ -68,9 +68,17 @@ const editCampground = catchAsyncError(async (req, res, next) => {
 });
 
 const deleteCampground = catchAsyncError(async (req, res, next) => {
-  await Campground.findByIdAndDelete(req.params.id);
-  req.flash('success', 'Campground deleted successfully');
-  res.redirect('/campground/all');
+  const campground = await Campground.findById({ _id: req.params.id });
+  var decoded = await jwt.verify(req.session.userId, 'thisissecret');
+
+  if (campground.author._id == decoded.id) {
+    await Campground.findByIdAndDelete(req.params.id);
+    req.flash('success', 'Campground deleted successfully');
+    res.redirect('/campground/all');
+  } else {
+    req.flash('error', 'You are not authorise to delete this campground');
+    res.redirect('/campground/all');
+  }
 });
 
 export {

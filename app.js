@@ -1,6 +1,7 @@
 /** @format */
 
 import express from 'express';
+import dotenv from 'dotenv';
 import methodOverride from 'method-override';
 import engine from 'ejs-mate';
 import session from 'express-session';
@@ -16,8 +17,12 @@ import campgroundRoutes from './routes/campground.routes.js';
 import reviewRoutes from './routes/review.routes.js';
 import userRoutes from './routes/user.routes.js';
 
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');

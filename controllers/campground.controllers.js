@@ -53,7 +53,7 @@ const getCampground = catchAsyncError(async (req, res, next) => {
 
 const editCampgroundForm = catchAsyncError(async (req, res, next) => {
   const campground = await Campground.findById({ _id: req.params.id });
-  var decoded = await jwt.verify(req.session.userId, 'thisissecret');
+  var decoded = await jwt.verify(req.session.userId, process.env.JWT_SECRET);
 
   if (campground.author._id == decoded.id) {
     res.render('campground/edit', { campground });
@@ -74,7 +74,7 @@ const editCampground = catchAsyncError(async (req, res, next) => {
 
 const deleteCampground = catchAsyncError(async (req, res, next) => {
   const campground = await Campground.findById({ _id: req.params.id });
-  var decoded = await jwt.verify(req.session.userId, 'thisissecret');
+  var decoded = await jwt.verify(req.session.userId, process.env.JWT_SECRET);
 
   if (campground.author._id == decoded.id) {
     await Campground.findByIdAndDelete(req.params.id);

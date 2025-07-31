@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken';
 const createReview = catchAsyncError(async (req, res, next) => {
   const { rating, body } = req.body.review;
 
-  var decoded = await jwt.verify(req.session.userId, 'thisissecret');
+  var decoded = await jwt.verify(req.session.userId, process.env.JWT_SECRET);
 
   if (!rating || !body) {
     throw new customError(400, 'All fields are required.');
@@ -29,7 +29,7 @@ const deleteReview = catchAsyncError(async (req, res, next) => {
   const campground = await Campground.findById(req.params.id);
   const review = await Review.findById(reviewId);
 
-  var decoded = await jwt.verify(req.session.userId, 'thisissecret');
+  var decoded = await jwt.verify(req.session.userId, process.env.JWT_SECRET);
 
   if (review.author._id == decoded.id) {
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });

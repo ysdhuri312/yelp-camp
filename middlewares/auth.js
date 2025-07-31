@@ -19,10 +19,10 @@ export const isLoggedIn = catchAsyncError(async (req, res, next) => {
   }
 
   if (token) {
-    var decoded = await jwt.verify(token, 'thisissecret');
+    var decoded = await jwt.verify(token, process.env.JWT_SECRET);
     const verifyToken = jwt.verify(
       token,
-      'thisissecret',
+      process.env.JWT_SECRET,
       function (err, decoded) {
         return true;
       }

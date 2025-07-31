@@ -72,7 +72,10 @@ const signinUser = catchAsyncError(async (req, res, next) => {
   }
 
   // if I use callback in jwt.sign for error the we gave error
-  const signToken = await generateToken({ id: user._id }, 'thisissecret');
+  const signToken = await generateToken(
+    { id: user._id },
+    process.env.JWT_SECRET
+  );
   req.session.userId = signToken;
 
   req.flash('success', 'Welcome Back');

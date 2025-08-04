@@ -19,7 +19,7 @@ router.get('/all', getAllCampgrounds);
 router.get('/new', isLoggedIn, showNewCampgroundForm);
 router.post('/', isLoggedIn, upload.array('images'), createNewCampground);
 router.get('/:id', getCampground);
-router.put('/:id', isLoggedIn, editCampground);
+router.put('/:id', isLoggedIn, upload.array('images'), editCampground);
 router.delete('/:id', isLoggedIn, deleteCampground);
 router.get('/:id/edit', isLoggedIn, editCampgroundForm);
 

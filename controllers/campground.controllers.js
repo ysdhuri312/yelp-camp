@@ -71,6 +71,10 @@ const editCampgroundForm = catchAsyncError(async (req, res, next) => {
 });
 
 const editCampground = catchAsyncError(async (req, res, next) => {
+  req.body.campground.images = req.files.map((f) => ({
+    url: `http://localhost:3000/${f.path.replace(/\\/g, '/')}`,
+    filename: f.filename,
+  }));
   await Campground.findByIdAndUpdate(req.params.id, {
     $set: { ...req.body.campground },
   });

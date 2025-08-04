@@ -11,12 +11,13 @@ import {
   deleteCampground,
 } from '../controllers/campground.controllers.js';
 import { isLoggedIn } from '../middlewares/auth.js';
+import upload from '../cloudinary/index.js';
 
 const router = express.Router();
 
 router.get('/all', getAllCampgrounds);
 router.get('/new', isLoggedIn, showNewCampgroundForm);
-router.post('/', isLoggedIn, createNewCampground);
+router.post('/', isLoggedIn, upload.array('images'), createNewCampground);
 router.get('/:id', getCampground);
 router.put('/:id', isLoggedIn, editCampground);
 router.delete('/:id', isLoggedIn, deleteCampground);

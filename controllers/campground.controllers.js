@@ -3,6 +3,7 @@
 import Campground from '../models/campground.model.js';
 import catchAsyncError from '../utils/catchAsyncError.js';
 import jwt from 'jsonwebtoken';
+// import { cloudinary } from '../cloudinary/index.js';
 
 const getAllCampgrounds = catchAsyncError(async (req, res, next) => {
   const campgrounds = await Campground.find({});
@@ -17,9 +18,15 @@ const showNewCampgroundForm = catchAsyncError((req, res, next) => {
 });
 
 const createNewCampground = catchAsyncError(async (req, res, next) => {
-  const { title, location, description, price, image } = req.body.campground;
+  const { title, location, description, price } = req.body.campground;
+  req.body.campground.images = req.files.map((f) => ({
+    url: `http://localhost:3000/${f.path.replace(/\\/g, '/')}`,
+    filename: f.filename,
+  }));
+
   req.body.campground.author = req.userId;
-  if (!title || !location || !description || !price || !image) {
+  // console.log(req.files);
+  if (!title || !location || !description || !price) {
     return new CustomError(400, 'All fields are required.');
   }
   const campground = await Campground.create({ ...req.body.campground });

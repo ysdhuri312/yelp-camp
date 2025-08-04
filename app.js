@@ -33,6 +33,7 @@ connectDB();
 app.use(express.static(path.join(path.resolve(), 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 app.use(methodOverride('_method'));
 var sessionConfig = {
   secret: 'qwerty',

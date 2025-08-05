@@ -1,48 +1,28 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Campground</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        body,
-        a {
-            text-decoration: none !important;
-            list-style: none !important;
-        }
+      body,
+      a {
+        text-decoration: none !important;
+        list-style: none !important;
+      }
     </style>
-</head>
-<body class="d-flex flex-column vh-100">
+  </head>
+  <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar') %>
-        <main class="container" style="margin-top: 6rem;">
-            <%- include('../partials/flash') %>
-                <%- body -%>
-        </main>
-        <%- include('../partials/footer') %>
+    <main class="container" style="margin-top: 6rem">
+      <%- include('../partials/flash') %> <%- body -%>
+    </main>
+    <%- include('../partials/footer') %>
 
-            <script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-            <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (() => {
-                    'use strict'
-
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    const forms = document.querySelectorAll('.needs-validation')
-
-                    // Loop over them and prevent submission
-                    Array.from(forms).forEach(form => {
-                        form.addEventListener('submit', event => {
-                            if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
-                            }
-
-                            form.classList.add('was-validated')
-                        }, false)
-                    })
-                })()
-            </script>
-
-</body>
+    <script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="/js/formValidation.js"></script>
+  </body>
 </html>

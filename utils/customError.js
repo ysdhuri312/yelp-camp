@@ -1,10 +1,9 @@
 /** @format */
 
 export default class CustomError extends Error {
-  constructor(statusCode, message, source) {
+  constructor(statusCode, message) {
     super();
     this.message = message;
     this.statusCode = statusCode;
-    this.source = source;
   }
 }

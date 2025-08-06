@@ -76,7 +76,7 @@ app.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) =>
 // 404 error route
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
-  return new CustomError(404, 'Page not found...');
+  next(new CustomError(404, 'Page not found...'));
 });
 
 app.use(errorHandler);

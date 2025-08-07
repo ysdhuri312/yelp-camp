@@ -1,7 +1,7 @@
 /** @format */
 
 import jwt from 'jsonwebtoken';
-import CustomError from '../utils/CustomError.js';
+import CustomError from '../utils/customError.js';
 import catchAsyncError from '../utils/catchAsyncError.js';
 
 export const generateToken = (payload, secret) => {

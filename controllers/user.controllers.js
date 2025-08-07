@@ -2,7 +2,7 @@
 
 import bcrypt from 'bcrypt';
 import User from '../models/user.model.js';
-import CustomError from '../utils/CustomError.js';
+import CustomError from '../utils/customError.js';
 import catchAsyncError from '../utils/catchAsyncError.js';
 import { generateToken } from '../middlewares/auth.js';
 

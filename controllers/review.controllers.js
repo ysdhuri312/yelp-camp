@@ -3,7 +3,7 @@
 import catchAsyncError from '../utils/catchAsyncError.js';
 import Review from '../models/review.model.js';
 import Campground from '../models/campground.model.js';
-import customError from '../utils/CustomError.js';
+import customError from '../utils/customError.js';
 import jwt from 'jsonwebtoken';
 
 const createReview = catchAsyncError(async (req, res, next) => {

@@ -11,7 +11,7 @@ import path from 'node:path';
 
 import connectDB from './config/db.js';
 import errorHandler from './utils/error.handler.js';
-import CustomError from './utils/CustomError.js';
+import CustomError from './CustomError.js';
 import campgroundRoutes from './routes/campground.routes.js';
 import reviewRoutes from './routes/review.routes.js';
 import userRoutes from './routes/user.routes.js';

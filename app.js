@@ -16,7 +16,7 @@ import campgroundRoutes from './routes/campground.routes.js';
 import reviewRoutes from './routes/review.routes.js';
 import userRoutes from './routes/user.routes.js';
 
-if (process.env.NODE_ENV !== 'dev') {
+if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
 

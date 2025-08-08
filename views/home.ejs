@@ -19,7 +19,7 @@
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
             <a class="nav-link" href="/campground/all">Campgrounds</a>
-            <% if(! isAuthenticated) { %>
+            <% if(isAuthenticated) { %>
             <a class="nav-link" href="/user/signin">Login</a>
             <a class="nav-link" href="/user/signup">Register</a>
             <% } else { %>

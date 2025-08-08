@@ -1,11 +1,51 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yelp Camp | Campground finder</title>
-</head>
-<body>
-    <h1>Hello world</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YelpCamp</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body class="d-flex text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div class="d-flex justify-content-between">
+          <!-- class="float-md-left mb-0" -->
+          <h3>YelpCamp</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="/campground/all">Campgrounds</a>
+            <% if(! isAuthenticated) { %>
+            <a class="nav-link" href="/user/signin">Login</a>
+            <a class="nav-link" href="/user/signup">Register</a>
+            <% } else { %>
+            <a class="nav-link" href="/user/signout">Logout</a>
+            <% } %>
+          </nav>
+        </div>
+      </header>
+      <main class="px-3">
+        <h1>Yelp Camp</h1>
+        <p class="lead">
+          Campground Finder is a user-friendly web application designed to help
+          outdoor <br />enthusiasts, explore, and book campgrounds with ease.
+        </p>
+        <a
+          href="/campground/all"
+          class="btn btn-lg btn-secondary font-weight-bold border-white bg-white"
+          >View Campgrounds</a
+        >
+      </main>
+
+      <footer class="mt-auto text-white">
+        <p>&copy; YelpCamp 2025</p>
+      </footer>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+  </body>
 </html>

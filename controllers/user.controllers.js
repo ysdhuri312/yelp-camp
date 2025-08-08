@@ -66,8 +66,7 @@ const signinUser = catchAsyncError(async (req, res, next) => {
     res.redirect('/user/signin');
     return new CustomError(
       401,
-      'Authentication failed due to a user credentials mismatch',
-      'SigninUser'
+      'Authentication failed due to a user credentials mismatch'
     );
   }
 
